@@ -34,6 +34,20 @@ warn_msg() {
 # 1. 시스템 요구사항 확인
 info_msg "시스템 요구사항 확인 중..."
 
+# SQLite3 설치 확인
+if ! command -v sqlite3 &> /dev/null; then
+    info_msg "SQLite3 설치 중..."
+    sudo apt update && sudo apt install -y sqlite3
+    if [ $? -eq 0 ]; then
+        success_msg "SQLite3 설치 완료"
+    else
+        error_msg "SQLite3 설치 실패"
+        exit 1
+    fi
+else
+    success_msg "SQLite3 확인됨"
+fi
+
 # Python 확인
 if ! command -v python3 &> /dev/null; then
     handle_error "Python 3가 설치되어 있지 않습니다."
@@ -77,12 +91,20 @@ success_msg "Python 패키지 설치 완료"
 
 # 샘플 데이터베이스 사용
 info_msg "데이터베이스 설정 중..."
+
+# 데이터베이스 디렉토리 생성
+mkdir -p hr_backend/src/database
+
 if [ -f "hr_system_sample.db" ]; then
     cp hr_system_sample.db hr_system.db
     success_msg "샘플 데이터베이스 복사 완료"
 else
     # 데이터베이스 생성
-    python create_attendance_tables.py || handle_error "출퇴근 테이블 생성 실패"
+    python hr_backend/add_attendance_to_main_db.py
+    if [ $? -ne 0 ]; then
+        error_msg "출퇴근 테이블 생성 실패"
+        exit 1
+    fi
     success_msg "출퇴근 테이블 생성 완료"
 fi
 
