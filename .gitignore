@@ -1,0 +1,124 @@
+# === HR ERP 시스템 Git 백업용 .gitignore ===
+
+# Python 관련
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 가상환경 (백업에서 제외)
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# IDE 설정 파일
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 로그 파일
+*.log
+logs/
+
+# 임시 파일
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Node.js 관련
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# 빌드 결과물 (프론트엔드)
+dist/
+build/
+
+# 환경 변수 파일 (보안상 제외)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 데이터베이스 파일 (실제 데이터는 제외, 스키마만 포함)
+*.db
+*.sqlite
+*.sqlite3
+instance/
+
+# 백업 파일
+*.backup
+*.bak
+
+# 테스트 관련
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# 캐시 파일
+.cache/
+.parcel-cache/
+
+# 운영체제 관련
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 스크린샷 (용량 절약)
+screenshots/
+
+# 임시 스크립트 파일들
+create_*.py
+check_*.py
+test_*.py
+fix_*.py
+update_*.py
+cleanup_*.py
+debug_*.py
+
+# 마크다운 보고서 파일들 (백업에서 제외)
+*.md
+
+# 토큰 및 인증 파일
+token.txt
+*.json
+login_result.json
+
+# 업로드 디렉토리
+upload/
+
+# 기타 임시 파일
+*.txt
+sandbox.txt
+
